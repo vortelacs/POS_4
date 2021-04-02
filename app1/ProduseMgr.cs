@@ -23,8 +23,8 @@ namespace app1
 
             if (CompareProd(new Produs(id, nume, cod, producator)))
             {
-                elemente[nrElemente] = (new Produs(id, nume, cod, producator));
-                nrElemente++;
+                elemente.Add(new Produs(id, nume, cod, producator));
+                //nrElemente++;
                 Console.WriteLine("Produsul a fost adugat!");
             }
             else
@@ -40,7 +40,7 @@ namespace app1
         bool CompareProd(Produs obj)
         {
             bool ok = true;
-            for (int i = 0; i < nrElemente; i++)
+            for (int i = 0; i < elemente.Count; i++)
             {
                 if (elemente[i] is Produs)
                 {
@@ -57,12 +57,9 @@ namespace app1
         {
 
             Console.WriteLine("\n\nProdusele sunt: ");
-            for (int i = 0; i < nrElemente; i++)
+            foreach (ProdusAbstract item in elemente)
             {
-                if (elemente[i] is Produs)
-                {
-                    Console.WriteLine(elemente[i].Descriere());
-                }
+                if (item is Produs) item.Descriere();
             }
 
         }

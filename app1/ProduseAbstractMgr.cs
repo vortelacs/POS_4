@@ -1,24 +1,29 @@
 ﻿using entitati;
 using System;
+using System.Collections;
 
 namespace app1
 {
     public abstract class ProduseAbstractMgr
     {
 
-        protected static ProdusAbstract[] elemente = new ProdusAbstract[100];
-        protected static int nrElemente = 0;
+        protected static ArrayList elemente = new ArrayList();
+        //protected static int nrElemente = 0;
 
 
 
 
-        public void Write2Console()
+        public static void Write2Console()
         {
-            for (int i = 0; i < nrElemente; i++)
+            foreach (ProdusAbstract item in elemente)
             {
-
-                Console.WriteLine(elemente[i].Descriere());
+                Console.WriteLine(item.Descriere());
             }
+        }
+
+        public void Sort()
+        {
+            elemente.Sort(new ProdusAbstractComparer()); ;
         }
 
     }

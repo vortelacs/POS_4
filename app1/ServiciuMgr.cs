@@ -19,8 +19,8 @@ namespace app1
 
             if (CompareServ(new Serviciu(id, nume, cod)))
             {
-                elemente[nrElemente] = (new Serviciu(id, nume, cod));
-                nrElemente++;
+                elemente.Add(new Serviciu(id, nume, cod));
+                //nrElemente++;
                 Console.WriteLine("Serviciul a fost adugat!");
             }
             else
@@ -34,7 +34,7 @@ namespace app1
         bool CompareServ(Serviciu obj)
         {
             bool ok = true;
-            for (int i = 0; i < nrElemente; i++)
+            for (int i = 0; i < elemente.Count; i++)
             {
 
                 if (elemente[i] is Serviciu)
@@ -49,14 +49,12 @@ namespace app1
         public void WriteServicii()
         {
 
-            Console.WriteLine("\n\nProdusele sunt: ");
-            for (int i = 0; i < nrElemente; i++)
-            {
-                if (elemente[i] is Serviciu)
+            Console.WriteLine("\n\nServiciile sunt: ");
+
+                foreach (ProdusAbstract item in elemente)
                 {
-                    Console.WriteLine(elemente[i].Descriere());
+                    if(item is Serviciu)item.Descriere();
                 }
-            }
 
         }
     }

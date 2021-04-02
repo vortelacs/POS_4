@@ -23,4 +23,6 @@ namespace entitati
         public abstract string Descriere();
 
     }
+
+
 }
